@@ -257,6 +257,26 @@
   }
   /* ===== END PREVIEW BUILD BLOCK ===== */
 
+  /* The logo PNG sits on a 2000x2000 square canvas and the mark itself only
+     occupies the middle ~36% vertically. object-contain would shrink it to
+     nothing, so we crop to the mark with object-cover + a tuned position. */
+  .brand-mark{
+    width: 150px;
+    height: 56px;
+    object-fit: cover;
+    object-position: 47.5% 51%;
+  }
+  @media (max-width: 640px){
+    .brand-mark{ width: 124px; height: 46px; }
+  }
+
+  /* Footer sits on charcoal; the plum ink in the logo only hits ~2:1 contrast
+     against it, so invert the mark to cream instead of shipping it unreadable. */
+  .brand-mark--light{
+    filter: brightness(0) invert(1);
+    opacity: 0.88;
+  }
+
   ::selection{
     background: var(--clay);
     color: var(--paper);
@@ -289,7 +309,7 @@
   }
 
   .hero-title{
-    font-size: clamp(2.5rem, 10vw, 6rem);
+    font-size: clamp(1.5rem, 4.5vw, 3.5rem);
   }
 
   @media (max-width: 480px){
@@ -313,7 +333,7 @@
   <div class="max-w-7xl mx-auto px-6 lg:px-10">
     <div class="flex items-center justify-between h-20">
       <a href="#home" class="flex items-center">
-        <img src="IMG_0175.jpeg" alt="701 Salon & Spa" class="h-10 sm:h-12 w-auto object-contain">
+        <img src="701-logo-transparentbg.png" alt="701 Salon &amp; Spa" class="brand-mark">
       </a>
 
       <div class="hidden lg:flex items-center gap-10 text-sm tracking-wide-plus" style="color:var(--plum)">
@@ -360,12 +380,11 @@
 
   <div class="relative z-10 h-full flex flex-col items-center justify-center text-center px-5 sm:px-6">
     <p class="reveal d1 tracking-wide-plusplus text-[11px] sm:text-sm mb-5 sm:mb-6" style="color:#E8D9C4">ELIZABETHTOWN, KENTUCKY</p>
-    <h1 class="reveal d2 hero-title font-serif leading-[0.95]" style="color:#FBF7F1">
-      Beauty, Slowed<br class="hidden sm:block"> Down &amp; Done Right
+    <h1 class="reveal d2 hero-title font-serif leading-[1.05] max-w-4xl" style="color:#FBF7F1">
+      Here at 701, we strive to give our guest the best luxury services in all things hair, nails, permanent makeup, and tattoos.
     </h1>
     <p class="reveal d3 max-w-xl mt-6 sm:mt-7 text-sm sm:text-lg font-light px-2" style="color:#EFE6D8">
-      A house of independent artists in Elizabethtown. Curls, blondes, extensions, nails, ink. Find your person
-      and stay a while.
+      We are located at 1111 North Dixie, Elizabethtown, KY.
     </p>
     <div class="reveal d4 mt-8 sm:mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto px-4 sm:px-0">
       <a href="https://square.site/book/7M7D8F14SMT57/beka-ballard-e-town-ky" target="_blank" rel="noopener"
@@ -965,7 +984,7 @@
   <div class="max-w-7xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-12 mb-12 sm:mb-16">
 
     <div>
-      <p class="font-serif text-3xl mb-4" style="color:var(--paper)">701 <span class="text-xs tracking-wide-plus font-sans">SALON &amp; SPA</span></p>
+      <img src="701-logo-transparentbg.png" alt="701 Salon &amp; Spa" class="brand-mark brand-mark--light mb-4">
       <p class="text-sm leading-relaxed" style="color:#A79E93">
         A modern, woman-owned salon in the heart of Elizabethtown, Kentucky, offering expert hair design,
         esthetics, and tattoo services in the area's most vibrant, welcoming atmosphere.
