@@ -159,6 +159,25 @@
     clip-path: polygon(0% 100%, 0% 22%, 4% 12%, 10% 5%, 20% 1%, 80% 1%, 90% 5%, 96% 12%, 100% 22%, 100% 100%);
   }
 
+  .no-scrollbar{
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .no-scrollbar::-webkit-scrollbar{ display: none; }
+
+  .gallery-tile{
+    box-shadow: 0 18px 34px -20px rgba(35,32,30,0.4);
+    transition: box-shadow .4s ease;
+  }
+  .gallery-tile:hover{
+    box-shadow: 0 24px 44px -18px rgba(35,32,30,0.5);
+  }
+
+  #uploadTile.drag-over{
+    background: rgba(180,105,74,0.08);
+    border-color: var(--clay-deep);
+  }
+
   ::selection{
     background: var(--clay);
     color: var(--paper);
@@ -214,8 +233,8 @@
 <nav id="mainNav" class="fixed top-0 left-0 right-0 z-50 nav-glass">
   <div class="max-w-7xl mx-auto px-6 lg:px-10">
     <div class="flex items-center justify-between h-20">
-      <a href="#home" class="font-serif text-3xl tracking-wide" style="color:var(--plum)">
-        701 <span class="text-sm align-middle tracking-wide-plus font-sans font-light ml-1" style="color:var(--sage-deep)">SALON &amp; SPA</span>
+      <a href="#home" class="flex items-center">
+        <img src="IMG_0175.jpeg" alt="701 Salon & Spa" class="h-10 sm:h-12 w-auto object-contain">
       </a>
 
       <div class="hidden lg:flex items-center gap-10 text-sm tracking-wide-plus" style="color:var(--plum)">
@@ -255,8 +274,8 @@
 <!-- ================= HERO ================= -->
 <section id="home" class="relative h-[100svh] min-h-[560px] w-full overflow-hidden">
   <div class="absolute inset-0">
-    <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=1974&auto=format&fit=crop"
-         alt="Balayage hair styling" class="w-full h-full object-cover">
+    <img src="IMG_0173.jpeg"
+         alt="Balayage hair color result at 701 Salon & Spa" class="w-full h-full object-cover">
     <div class="absolute inset-0 hero-overlay"></div>
   </div>
 
@@ -302,12 +321,12 @@
 
     <div class="relative fade-in-scroll mb-10 sm:mb-0">
       <div class="relative rounded-[2rem] overflow-hidden clip-arch shadow-2xl">
-        <img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?q=80&w=1974&auto=format&fit=crop"
+        <img src="IMG_0172.jpeg"
              alt="701 Salon & Spa interior seating area" class="w-full h-[360px] sm:h-[460px] lg:h-[560px] object-cover">
       </div>
       <div class="absolute -bottom-6 sm:-bottom-8 right-3 sm:-right-10 w-28 sm:w-56 rounded-2xl overflow-hidden shadow-2xl border-4" style="border-color:var(--paper)">
-        <img src="https://images.unsplash.com/photo-1595475207225-428b62bda831?q=80&w=1974&auto=format&fit=crop"
-             alt="Salon styling station" class="w-full h-28 sm:h-56 object-cover">
+        <img src="IMG_0171.jpeg"
+             alt="701 Salon & Spa storefront entrance" class="w-full h-28 sm:h-56 object-cover">
       </div>
       <div class="absolute -top-8 -left-6 font-serif text-8xl select-none hidden sm:block num-mark">01</div>
     </div>
@@ -604,12 +623,12 @@
 </section>
 
 <!-- ================= GALLERY ================= -->
-<section id="gallery" class="relative py-20 sm:py-28 lg:py-36 px-5 sm:px-6 lg:px-10">
+<section id="gallery" class="relative py-20 sm:py-28 lg:py-36 px-5 sm:px-6 lg:px-10 overflow-hidden">
   <div class="max-w-7xl mx-auto">
-    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-16 fade-in-scroll">
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-10 sm:mb-14 fade-in-scroll">
       <div>
         <p class="tracking-wide-plusplus text-xs mb-4" style="color:var(--clay-deep)">GET INSPIRED</p>
-        <h2 class="font-serif text-5xl lg:text-6xl" style="color:var(--plum-deep)">Recent Work</h2>
+        <h2 class="font-serif text-4xl sm:text-5xl lg:text-6xl" style="color:var(--plum-deep)">Recent Work</h2>
       </div>
       <a href="https://www.instagram.com/701salonandspa" target="_blank" rel="noopener"
          class="mt-6 sm:mt-0 inline-flex items-center gap-2 text-sm tracking-wide-plus underline-grow" style="color:var(--plum)">
@@ -617,28 +636,60 @@
       </a>
     </div>
 
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 auto-rows-[140px] sm:auto-rows-[220px]">
-      <div class="fade-in-scroll row-span-2 rounded-2xl overflow-hidden group relative">
-        <img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?q=80&w=1974&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="Balayage waves">
-      </div>
-      <div class="fade-in-scroll rounded-2xl overflow-hidden group relative">
-        <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?q=80&w=1974&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="Salon chair styling">
-      </div>
-      <div class="fade-in-scroll rounded-2xl overflow-hidden group relative">
-        <img src="https://images.unsplash.com/photo-1522337194846-2020e34e2f24?q=80&w=1974&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="Facial treatment spa">
-      </div>
-      <div class="fade-in-scroll row-span-2 rounded-2xl overflow-hidden group relative">
-        <img src="https://images.unsplash.com/photo-1526045612212-70caf35c14df?q=80&w=1974&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="Blonde balayage result">
-      </div>
-      <div class="fade-in-scroll rounded-2xl overflow-hidden group relative">
-        <img src="https://images.unsplash.com/photo-1522336572468-97b06e8ef143?q=80&w=1974&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="Product shelf salon">
-      </div>
-      <div class="fade-in-scroll rounded-2xl overflow-hidden group relative">
-        <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?q=80&w=1974&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="Hair coloring process">
+    <!-- scroll controls -->
+    <div class="flex items-center justify-between mb-4 fade-in-scroll">
+      <p class="text-xs tracking-wide-plus" style="color:var(--sage-deep)">DRAG OR SCROLL TO EXPLORE</p>
+      <div class="hidden sm:flex gap-3">
+        <button id="galleryPrev" aria-label="Scroll gallery left"
+                class="w-11 h-11 rounded-full flex items-center justify-center border transition hover:bg-white/60"
+                style="border-color:var(--plum)">
+          <i data-lucide="chevron-left" class="w-5 h-5" style="color:var(--plum)"></i>
+        </button>
+        <button id="galleryNext" aria-label="Scroll gallery right"
+                class="w-11 h-11 rounded-full flex items-center justify-center border transition hover:bg-white/60"
+                style="border-color:var(--plum)">
+          <i data-lucide="chevron-right" class="w-5 h-5" style="color:var(--plum)"></i>
+        </button>
       </div>
     </div>
+
+    <!-- scrollable filmstrip -->
+    <div id="galleryTrack" class="fade-in-scroll no-scrollbar flex gap-4 sm:gap-5 overflow-x-auto snap-x snap-mandatory pb-4 -mx-5 px-5 sm:mx-0 sm:px-0 cursor-grab active:cursor-grabbing">
+
+      <div class="gallery-tile flex-shrink-0 snap-start w-64 sm:w-80 h-80 sm:h-96 rounded-2xl overflow-hidden group relative">
+        <img src="IMG_0173.jpeg" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="Balayage hair color result">
+      </div>
+      <div class="gallery-tile flex-shrink-0 snap-start w-64 sm:w-80 h-80 sm:h-96 rounded-2xl overflow-hidden group relative">
+        <img src="IMG_0172.jpeg" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="701 Salon & Spa lounge interior">
+      </div>
+      <div class="gallery-tile flex-shrink-0 snap-start w-64 sm:w-80 h-80 sm:h-96 rounded-2xl overflow-hidden group relative">
+        <img src="IMG_0171.jpeg" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="701 Salon & Spa storefront">
+      </div>
+      <div class="gallery-tile flex-shrink-0 snap-start w-64 sm:w-80 h-80 sm:h-96 rounded-2xl overflow-hidden group relative">
+        <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?q=80&w=1974&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="Salon chair styling">
+      </div>
+      <div class="gallery-tile flex-shrink-0 snap-start w-64 sm:w-80 h-80 sm:h-96 rounded-2xl overflow-hidden group relative">
+        <img src="https://images.unsplash.com/photo-1522337194846-2020e34e2f24?q=80&w=1974&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="Facial treatment spa">
+      </div>
+      <div class="gallery-tile flex-shrink-0 snap-start w-64 sm:w-80 h-80 sm:h-96 rounded-2xl overflow-hidden group relative">
+        <img src="https://images.unsplash.com/photo-1526045612212-70caf35c14df?q=80&w=1974&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="Blonde balayage result">
+      </div>
+
+      <!-- upload tile: stays pinned at the end of the track -->
+      <label id="uploadTile"
+             class="flex-shrink-0 snap-start w-64 sm:w-80 h-80 sm:h-96 rounded-2xl border-2 border-dashed flex flex-col items-center justify-center text-center gap-3 cursor-pointer transition hover:bg-white/50"
+             style="border-color:var(--clay); color:var(--plum)">
+        <i data-lucide="upload-cloud" class="w-8 h-8" style="color:var(--clay)"></i>
+        <span class="text-sm tracking-wide-plus px-6">ADD A PHOTO</span>
+        <span class="text-xs px-8" style="color:var(--sage-deep)">Previews instantly here in your browser</span>
+        <input id="galleryUpload" type="file" accept="image/*" multiple class="hidden">
+      </label>
+
+    </div>
+    <p id="galleryStatus" class="text-xs mt-4" style="color:var(--sage-deep)"></p>
   </div>
 </section>
+
 
 <!-- ================= TESTIMONIALS ================= -->
 <section class="relative py-20 sm:py-28 lg:py-36 px-5 sm:px-6 lg:px-10 overflow-hidden" style="background:var(--plum-deep)">
@@ -813,6 +864,101 @@
   }
   dots.forEach(d => d.addEventListener('click', () => showSlide(parseInt(d.dataset.i))));
   setInterval(() => showSlide((current + 1) % slides.length), 5500);
+
+  // ---- Gallery: arrow scroll controls ----
+  const galleryTrack = document.getElementById('galleryTrack');
+  const galleryPrev = document.getElementById('galleryPrev');
+  const galleryNext = document.getElementById('galleryNext');
+  function scrollGalleryBy(dir){
+    const tile = galleryTrack.querySelector('.gallery-tile, #uploadTile');
+    const step = tile ? tile.getBoundingClientRect().width + 20 : 300;
+    galleryTrack.scrollBy({ left: dir * step, behavior: 'smooth' });
+  }
+  galleryPrev?.addEventListener('click', () => scrollGalleryBy(-1));
+  galleryNext?.addEventListener('click', () => scrollGalleryBy(1));
+
+  // ---- Gallery: click-and-drag scroll for mouse users ----
+  let isDown = false, startX, scrollLeftStart;
+  galleryTrack.addEventListener('mousedown', (e) => {
+    if (e.target.closest('#uploadTile')) return;
+    isDown = true;
+    startX = e.pageX - galleryTrack.offsetLeft;
+    scrollLeftStart = galleryTrack.scrollLeft;
+  });
+  ['mouseleave', 'mouseup'].forEach(evt => galleryTrack.addEventListener(evt, () => isDown = false));
+  galleryTrack.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - galleryTrack.offsetLeft;
+    galleryTrack.scrollLeft = scrollLeftStart - (x - startX) * 1.4;
+  });
+
+  // ---- Gallery: upload preview ----
+  // Files preview instantly in the browser. To persist uploads permanently, point
+  // UPLOAD_ENDPOINT at your Cloudflare Worker route once it's deployed — this file
+  // will POST each image there as multipart/form-data and otherwise no-ops safely.
+  const UPLOAD_ENDPOINT = ''; // e.g. 'https://your-worker.your-subdomain.workers.dev/upload'
+
+  const uploadTile = document.getElementById('uploadTile');
+  const galleryUpload = document.getElementById('galleryUpload');
+  const galleryStatus = document.getElementById('galleryStatus');
+
+  function buildGalleryTile(src, alt){
+    const div = document.createElement('div');
+    div.className = 'gallery-tile flex-shrink-0 snap-start w-64 sm:w-80 h-80 sm:h-96 rounded-2xl overflow-hidden group relative';
+    const img = document.createElement('img');
+    img.src = src;
+    img.alt = alt || 'Uploaded photo';
+    img.className = 'w-full h-full object-cover group-hover:scale-110 transition duration-700';
+    div.appendChild(img);
+    return div;
+  }
+
+  function sendToWorker(file){
+    if (!UPLOAD_ENDPOINT) return;
+    const formData = new FormData();
+    formData.append('image', file);
+    fetch(UPLOAD_ENDPOINT, { method: 'POST', body: formData })
+      .catch(err => console.warn('Gallery upload endpoint not reachable yet:', err));
+  }
+
+  function handleFiles(fileList){
+    const files = Array.from(fileList).filter(f => f.type.startsWith('image/'));
+    if (!files.length) return;
+    files.forEach(file => {
+      const url = URL.createObjectURL(file);
+      const tile = buildGalleryTile(url, file.name);
+      galleryTrack.insertBefore(tile, uploadTile);
+      lucide.createIcons();
+      sendToWorker(file);
+    });
+    galleryTrack.scrollTo({ left: uploadTile.offsetLeft, behavior: 'smooth' });
+    galleryStatus.textContent = UPLOAD_ENDPOINT
+      ? `${files.length} photo(s) added and sent to your gallery storage.`
+      : `${files.length} photo(s) previewed in this browser only — connect a worker endpoint to save them permanently.`;
+  }
+
+  galleryUpload?.addEventListener('change', (e) => {
+    handleFiles(e.target.files);
+    e.target.value = '';
+  });
+
+  // drag-and-drop onto the upload tile
+  ['dragenter', 'dragover'].forEach(evt => {
+    uploadTile.addEventListener(evt, (e) => {
+      e.preventDefault();
+      uploadTile.classList.add('drag-over');
+    });
+  });
+  ['dragleave', 'drop'].forEach(evt => {
+    uploadTile.addEventListener(evt, (e) => {
+      e.preventDefault();
+      uploadTile.classList.remove('drag-over');
+    });
+  });
+  uploadTile.addEventListener('drop', (e) => {
+    if (e.dataTransfer?.files?.length) handleFiles(e.dataTransfer.files);
+  });
 
   document.getElementById('year').textContent = new Date().getFullYear();
 </script>
