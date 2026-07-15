@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>701 Salon & Spa | Elizabethtown, KY</title>
+<meta name="description" content="701 Salon & Spa — modern boho hair design, color, and esthetics in Elizabethtown, Kentucky.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<style>
+  :root{
+    --cream: #F4ECE2;
+    --cream-deep: #EBE0D2;
+    --paper: #FBF7F1;
+    --plum: #5B4A47;
+    --plum-deep: #3E322F;
+    --clay: #B4694A;
+    --clay-deep: #9C5439;
+    --sage: #818C74;
+    --sage-deep: #63705A;
+    --charcoal: #23201E;
+    --gold: #B7996B;
+  }
+
+  *{ scroll-behavior: smooth; }
+
+  body{
+    background-color: var(--cream);
+    color: var(--charcoal);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+  }
+
+  .font-serif{ font-family: 'Cormorant Garamond', serif; }
+
+  .tracking-wide-plus{ letter-spacing: 0.22em; }
+  .tracking-wide-plusplus{ letter-spacing: 0.32em; }
+
+  .btn-clay{
+    background: var(--clay);
+    color: var(--paper);
+    transition: all .4s cubic-bezier(.22,1,.36,1);
+    box-shadow: 0 8px 24px -8px rgba(180,105,74,0.55);
+  }
+  .btn-clay:hover{
+    background: var(--clay-deep);
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px -8px rgba(180,105,74,0.65);
+  }
+
+  .btn-outline{
+    border: 1px solid var(--plum);
+    color: var(--plum);
+    transition: all .4s cubic-bezier(.22,1,.36,1);
+  }
+  .btn-outline:hover{
+    background: var(--plum);
+    color: var(--paper);
+  }
+
+  .nav-glass{
+    background: rgba(244,236,226,0.55);
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    border-bottom: 1px solid rgba(91,74,71,0.08);
+    transition: all .5s ease;
+  }
+  .nav-glass.scrolled{
+    background: rgba(244,236,226,0.92);
+    box-shadow: 0 10px 30px -18px rgba(35,32,30,0.35);
+  }
+
+  .divider-line{
+    width: 64px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .reveal{
+    opacity: 0;
+    transform: translateY(28px);
+    animation: reveal-up .9s cubic-bezier(.22,1,.36,1) forwards;
+  }
+  @keyframes reveal-up{
+    to{ opacity:1; transform: translateY(0); }
+  }
+  .d1{ animation-delay: .05s; }
+  .d2{ animation-delay: .2s; }
+  .d3{ animation-delay: .35s; }
+  .d4{ animation-delay: .5s; }
+
+  .fade-in-scroll{
+    opacity: 0;
+    transform: translateY(36px);
+    transition: opacity 1s cubic-bezier(.22,1,.36,1), transform 1s cubic-bezier(.22,1,.36,1);
+  }
+  .fade-in-scroll.in-view{
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .card-lift{
+    transition: transform .5s cubic-bezier(.22,1,.36,1), box-shadow .5s cubic-bezier(.22,1,.36,1);
+  }
+  .card-lift:hover{
+    transform: translateY(-8px);
+    box-shadow: 0 30px 50px -24px rgba(35,32,30,0.35);
+  }
+
+  .grain::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+    pointer-events:none;
+    mix-blend-mode: overlay;
+  }
+
+  .hero-overlay{
+    background: linear-gradient(180deg, rgba(35,32,30,0.35) 0%, rgba(35,32,30,0.55) 55%, rgba(35,32,30,0.82) 100%);
+  }
+
+  .num-mark{
+    font-family: 'Cormorant Garamond', serif;
+    color: rgba(91,74,71,0.14);
+    font-weight: 500;
+  }
+
+  .underline-grow{
+    position: relative;
+  }
+  .underline-grow::after{
+    content:"";
+    position:absolute;
+    left:0; bottom:-6px;
+    width:0%;
+    height:1px;
+    background: var(--clay);
+    transition: width .45s cubic-bezier(.22,1,.36,1);
+  }
+  .underline-grow:hover::after{ width: 100%; }
+
+  .marquee-track{
+    display:flex;
+    width: max-content;
+    animation: marquee 34s linear infinite;
+  }
+  @keyframes marquee{
+    from{ transform: translateX(0); }
+    to{ transform: translateX(-50%); }
+  }
+
+  .clip-arch{
+    clip-path: polygon(0% 100%, 0% 22%, 4% 12%, 10% 5%, 20% 1%, 80% 1%, 90% 5%, 96% 12%, 100% 22%, 100% 100%);
+  }
+
+  ::selection{
+    background: var(--clay);
+    color: var(--paper);
+  }
+
+  .testimonial-slide{
+    display:none;
+  }
+  .testimonial-slide.active{
+    display:block;
+    animation: reveal-up .7s ease forwards;
+  }
+
+  .dot{
+    width:8px; height:8px; border-radius:9999px;
+    background: rgba(91,74,71,0.25);
+    transition: all .35s ease;
+  }
+  .dot.active{
+    background: var(--clay);
+    width:24px; border-radius:9999px;
+  }
+
+  .scroll-cue{
+    animation: bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{
+    0%,100%{ transform: translateY(0); opacity:.7; }
+    50%{ transform: translateY(8px); opacity:1; }
+  }
+
+  .hero-title{
+    font-size: clamp(2.5rem, 10vw, 6rem);
+  }
+
+  @media (max-width: 480px){
+    .divider-line{ width: 48px; }
+    .marquee-track{ animation-duration: 22s; }
+  }
+
+  /* prevent horizontal scroll from any overflowing decorative element */
+  html, body{ overflow-x: hidden; width: 100%; }
+
+  /* larger, easier tap targets on touch devices */
+  @media (hover: none){
+    a, button{ -webkit-tap-highlight-color: transparent; }
+  }
+</style>
+</head>
+<body class="antialiased">
+
+<!-- ================= NAV ================= -->
+<nav id="mainNav" class="fixed top-0 left-0 right-0 z-50 nav-glass">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="flex items-center justify-between h-20">
+      <a href="#home" class="font-serif text-3xl tracking-wide" style="color:var(--plum)">
+        701 <span class="text-sm align-middle tracking-wide-plus font-sans font-light ml-1" style="color:var(--sage-deep)">SALON &amp; SPA</span>
+      </a>
+
+      <div class="hidden lg:flex items-center gap-10 text-sm tracking-wide-plus" style="color:var(--plum)">
+        <a href="#home" class="underline-grow">HOME</a>
+        <a href="#services" class="underline-grow">SERVICES</a>
+        <a href="#about" class="underline-grow">ABOUT</a>
+        <a href="#team" class="underline-grow">TEAM</a>
+        <a href="#gallery" class="underline-grow">GALLERY</a>
+        <a href="#contact" class="underline-grow">CONTACT</a>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <a href="https://square.site/book/7M7D8F14SMT57/beka-ballard-e-town-ky" target="_blank" rel="noopener"
+           class="hidden sm:inline-block btn-clay px-6 py-2.5 rounded-full text-sm tracking-wide-plus">
+          BOOK ONLINE
+        </a>
+        <button id="menuBtn" class="lg:hidden" style="color:var(--plum)">
+          <i data-lucide="menu" class="w-7 h-7"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- mobile menu -->
+  <div id="mobileMenu" class="hidden lg:hidden px-6 pb-6 space-y-4 text-sm tracking-wide-plus" style="color:var(--plum)">
+    <a href="#home" class="block py-1">HOME</a>
+    <a href="#services" class="block py-1">SERVICES</a>
+    <a href="#about" class="block py-1">ABOUT</a>
+    <a href="#team" class="block py-1">TEAM</a>
+    <a href="#gallery" class="block py-1">GALLERY</a>
+    <a href="#contact" class="block py-1">CONTACT</a>
+    <a href="https://square.site/book/7M7D8F14SMT57/beka-ballard-e-town-ky" target="_blank" rel="noopener"
+       class="inline-block btn-clay px-6 py-2.5 rounded-full mt-2">BOOK ONLINE</a>
+  </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<section id="home" class="relative h-[100svh] min-h-[560px] w-full overflow-hidden">
+  <div class="absolute inset-0">
+    <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=1974&auto=format&fit=crop"
+         alt="Balayage hair styling" class="w-full h-full object-cover">
+    <div class="absolute inset-0 hero-overlay"></div>
+  </div>
+
+  <div class="relative z-10 h-full flex flex-col items-center justify-center text-center px-5 sm:px-6">
+    <p class="reveal d1 tracking-wide-plusplus text-[11px] sm:text-sm mb-5 sm:mb-6" style="color:#E8D9C4">ELIZABETHTOWN, KENTUCKY</p>
+    <h1 class="reveal d2 hero-title font-serif leading-[0.95]" style="color:#FBF7F1">
+      Beauty, Slowed<br class="hidden sm:block"> Down &amp; Done Right
+    </h1>
+    <p class="reveal d3 max-w-xl mt-6 sm:mt-7 text-sm sm:text-lg font-light px-2" style="color:#EFE6D8">
+      A warm, sunlit space for hair design, color, and esthetics — where every visit feels like an exhale.
+    </p>
+    <div class="reveal d4 mt-8 sm:mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto px-4 sm:px-0">
+      <a href="https://square.site/book/7M7D8F14SMT57/beka-ballard-e-town-ky" target="_blank" rel="noopener"
+         class="btn-clay w-full sm:w-auto px-8 sm:px-10 py-4 rounded-full tracking-wide-plus text-sm">BOOK AN APPOINTMENT</a>
+      <a href="#services" class="w-full sm:w-auto px-8 sm:px-10 py-4 rounded-full tracking-wide-plus text-sm border border-white/50 text-white hover:bg-white/10 transition">
+        EXPLORE SERVICES
+      </a>
+    </div>
+  </div>
+
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 scroll-cue">
+    <i data-lucide="chevron-down" class="w-7 h-7" style="color:#EFE6D8"></i>
+  </div>
+</section>
+
+<!-- ================= MARQUEE STRIP ================= -->
+<div class="py-4 overflow-hidden" style="background:var(--plum); color:var(--cream)">
+  <div class="marquee-track tracking-wide-plusplus text-xs sm:text-sm">
+    <span class="flex items-center gap-4 px-4">
+      HAIR DESIGN <span style="color:var(--gold)">✦</span> BALAYAGE &amp; COLOR <span style="color:var(--gold)">✦</span> FACIALS &amp; ESTHETICS <span style="color:var(--gold)">✦</span> LASH &amp; BROW <span style="color:var(--gold)">✦</span> SPECIALTY PACKAGES <span style="color:var(--gold)">✦</span>
+      HAIR DESIGN <span style="color:var(--gold)">✦</span> BALAYAGE &amp; COLOR <span style="color:var(--gold)">✦</span> FACIALS &amp; ESTHETICS <span style="color:var(--gold)">✦</span> LASH &amp; BROW <span style="color:var(--gold)">✦</span> SPECIALTY PACKAGES <span style="color:var(--gold)">✦</span>
+    </span>
+    <span class="flex items-center gap-4 px-4">
+      HAIR DESIGN <span style="color:var(--gold)">✦</span> BALAYAGE &amp; COLOR <span style="color:var(--gold)">✦</span> FACIALS &amp; ESTHETICS <span style="color:var(--gold)">✦</span> LASH &amp; BROW <span style="color:var(--gold)">✦</span> SPECIALTY PACKAGES <span style="color:var(--gold)">✦</span>
+      HAIR DESIGN <span style="color:var(--gold)">✦</span> BALAYAGE &amp; COLOR <span style="color:var(--gold)">✦</span> FACIALS &amp; ESTHETICS <span style="color:var(--gold)">✦</span> LASH &amp; BROW <span style="color:var(--gold)">✦</span> SPECIALTY PACKAGES <span style="color:var(--gold)">✦</span>
+    </span>
+  </div>
+</div>
+
+<!-- ================= ABOUT ================= -->
+<section id="about" class="relative py-20 sm:py-28 lg:py-36 px-5 sm:px-6 lg:px-10 overflow-hidden">
+  <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+
+    <div class="relative fade-in-scroll mb-10 sm:mb-0">
+      <div class="relative rounded-[2rem] overflow-hidden clip-arch shadow-2xl">
+        <img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?q=80&w=1974&auto=format&fit=crop"
+             alt="701 Salon & Spa interior seating area" class="w-full h-[360px] sm:h-[460px] lg:h-[560px] object-cover">
+      </div>
+      <div class="absolute -bottom-6 sm:-bottom-8 right-3 sm:-right-10 w-28 sm:w-56 rounded-2xl overflow-hidden shadow-2xl border-4" style="border-color:var(--paper)">
+        <img src="https://images.unsplash.com/photo-1595475207225-428b62bda831?q=80&w=1974&auto=format&fit=crop"
+             alt="Salon styling station" class="w-full h-28 sm:h-56 object-cover">
+      </div>
+      <div class="absolute -top-8 -left-6 font-serif text-8xl select-none hidden sm:block num-mark">01</div>
+    </div>
+
+    <div class="fade-in-scroll">
+      <p class="tracking-wide-plusplus text-xs mb-4" style="color:var(--clay-deep)">OUR STORY</p>
+      <h2 class="font-serif text-5xl lg:text-6xl leading-tight mb-6" style="color:var(--plum-deep)">
+        A Little Bohemian, <br>A Lot of Heart
+      </h2>
+      <div class="divider-line mb-8"></div>
+      <p class="text-lg leading-relaxed mb-6" style="color:#4B4340">
+        Tucked into the heart of Elizabethtown, 701 Salon &amp; Spa was built around a simple idea: getting your
+        hair or skin done should feel like time well spent, not a task to rush through. Our space blends warm
+        textures, soft light, and organic touches with the precision and artistry of a truly professional team.
+      </p>
+      <p class="text-lg leading-relaxed mb-10" style="color:#4B4340">
+        From lived-in balayage to relaxing facials, every service is approached with the same intention: listen
+        closely, work carefully, and send you out feeling like the best version of yourself.
+      </p>
+
+      <div class="grid grid-cols-3 gap-3 sm:gap-6 mb-10">
+        <div>
+          <p class="font-serif text-3xl sm:text-4xl" style="color:var(--clay-deep)">10+</p>
+          <p class="text-[10px] sm:text-xs tracking-wide-plus mt-1" style="color:var(--sage-deep)">YEARS IN E-TOWN</p>
+        </div>
+        <div>
+          <p class="font-serif text-3xl sm:text-4xl" style="color:var(--clay-deep)">5.0</p>
+          <p class="text-[10px] sm:text-xs tracking-wide-plus mt-1" style="color:var(--sage-deep)">AVERAGE RATING</p>
+        </div>
+        <div>
+          <p class="font-serif text-3xl sm:text-4xl" style="color:var(--clay-deep)">100%</p>
+          <p class="text-[10px] sm:text-xs tracking-wide-plus mt-1" style="color:var(--sage-deep)">HAND-MIXED COLOR</p>
+        </div>
+      </div>
+
+      <a href="https://square.site/book/7M7D8F14SMT57/beka-ballard-e-town-ky" target="_blank" rel="noopener"
+         class="btn-outline inline-block px-9 py-3.5 rounded-full tracking-wide-plus text-sm">
+        RESERVE YOUR VISIT
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SERVICES ================= -->
+<section id="services" class="relative py-20 sm:py-28 lg:py-36 px-5 sm:px-6 lg:px-10" style="background:var(--cream-deep)">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center max-w-2xl mx-auto mb-20 fade-in-scroll">
+      <p class="tracking-wide-plusplus text-xs mb-4" style="color:var(--clay-deep)">WHAT WE OFFER</p>
+      <h2 class="font-serif text-5xl lg:text-6xl mb-6" style="color:var(--plum-deep)">Core Services</h2>
+      <div class="divider-line mx-auto"></div>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+
+      <!-- Service 1 -->
+      <div class="fade-in-scroll card-lift rounded-3xl overflow-hidden shadow-lg" style="background:var(--paper)">
+        <div class="relative h-64 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?q=80&w=1974&auto=format&fit=crop"
+               alt="Hair design and coloring" class="w-full h-full object-cover">
+          <div class="absolute top-4 left-4 w-11 h-11 rounded-full flex items-center justify-center" style="background:var(--clay)">
+            <i data-lucide="scissors" class="w-5 h-5 text-white"></i>
+          </div>
+        </div>
+        <div class="p-8">
+          <h3 class="font-serif text-3xl mb-3" style="color:var(--plum-deep)">Hair Design &amp; Coloring</h3>
+          <p class="text-sm leading-relaxed mb-6" style="color:#5B534F">
+            Balayage, lived-in color, precision cuts, and custom formulations tailored to your tone and texture.
+          </p>
+          <ul class="space-y-2 mb-6 text-sm" style="color:#5B534F">
+            <li class="flex justify-between border-b border-black/5 pb-2"><span>Custom Cut &amp; Style</span><span style="color:var(--clay-deep)">from $55</span></li>
+            <li class="flex justify-between border-b border-black/5 pb-2"><span>Balayage / Lived-In Color</span><span style="color:var(--clay-deep)">from $165</span></li>
+            <li class="flex justify-between"><span>Full Color / Retouch</span><span style="color:var(--clay-deep)">from $85</span></li>
+          </ul>
+          <a href="https://square.site/book/7M7D8F14SMT57/beka-ballard-e-town-ky" target="_blank" rel="noopener"
+             class="inline-flex items-center gap-2 text-sm tracking-wide-plus underline-grow" style="color:var(--plum)">
+            BOOK THIS SERVICE <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Service 2 -->
+      <div class="fade-in-scroll card-lift rounded-3xl overflow-hidden shadow-lg" style="background:var(--paper)">
+        <div class="relative h-64 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?q=80&w=1974&auto=format&fit=crop"
+               alt="Spa facial treatment" class="w-full h-full object-cover">
+          <div class="absolute top-4 left-4 w-11 h-11 rounded-full flex items-center justify-center" style="background:var(--sage)">
+            <i data-lucide="flower-2" class="w-5 h-5 text-white"></i>
+          </div>
+        </div>
+        <div class="p-8">
+          <h3 class="font-serif text-3xl mb-3" style="color:var(--plum-deep)">Spa &amp; Esthetics</h3>
+          <p class="text-sm leading-relaxed mb-6" style="color:#5B534F">
+            Restorative facials, lash and brow shaping, and relaxation-focused treatments for skin that glows.
+          </p>
+          <ul class="space-y-2 mb-6 text-sm" style="color:#5B534F">
+            <li class="flex justify-between border-b border-black/5 pb-2"><span>Signature Facial</span><span style="color:var(--clay-deep)">from $75</span></li>
+            <li class="flex justify-between border-b border-black/5 pb-2"><span>Lash Lift &amp; Tint</span><span style="color:var(--clay-deep)">from $65</span></li>
+            <li class="flex justify-between"><span>Brow Shape &amp; Tint</span><span style="color:var(--clay-deep)">from $30</span></li>
+          </ul>
+          <a href="https://square.site/book/7M7D8F14SMT57/beka-ballard-e-town-ky" target="_blank" rel="noopener"
+             class="inline-flex items-center gap-2 text-sm tracking-wide-plus underline-grow" style="color:var(--plum)">
+            BOOK THIS SERVICE <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Service 3 -->
+      <div class="fade-in-scroll card-lift rounded-3xl overflow-hidden shadow-lg" style="background:var(--paper)">
+        <div class="relative h-64 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?q=80&w=1974&auto=format&fit=crop"
+               alt="Specialty spa package" class="w-full h-full object-cover">
+          <div class="absolute top-4 left-4 w-11 h-11 rounded-full flex items-center justify-center" style="background:var(--gold)">
+            <i data-lucide="sparkles" class="w-5 h-5 text-white"></i>
+          </div>
+        </div>
+        <div class="p-8">
+          <h3 class="font-serif text-3xl mb-3" style="color:var(--plum-deep)">Specialty Packages</h3>
+          <p class="text-sm leading-relaxed mb-6" style="color:#5B534F">
+            Curated pairings of hair and skin services, designed for bridal parties, birthdays, or a well-earned reset.
+          </p>
+          <ul class="space-y-2 mb-6 text-sm" style="color:#5B534F">
+            <li class="flex justify-between border-b border-black/5 pb-2"><span>Cut, Color &amp; Facial</span><span style="color:var(--clay-deep)">from $220</span></li>
+            <li class="flex justify-between border-b border-black/5 pb-2"><span>Bridal Party Package</span><span style="color:var(--clay-deep)">custom quote</span></li>
+            <li class="flex justify-between"><span>The Full Refresh</span><span style="color:var(--clay-deep)">from $260</span></li>
+          </ul>
+          <a href="https://square.site/book/7M7D8F14SMT57/beka-ballard-e-town-ky" target="_blank" rel="noopener"
+             class="inline-flex items-center gap-2 text-sm tracking-wide-plus underline-grow" style="color:var(--plum)">
+            BOOK THIS SERVICE <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= TEAM ================= -->
+<section id="team" class="relative py-20 sm:py-28 lg:py-36 px-5 sm:px-6 lg:px-10">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center max-w-2xl mx-auto mb-14 sm:mb-20 fade-in-scroll">
+      <p class="tracking-wide-plusplus text-xs mb-4" style="color:var(--clay-deep)">MEET THE ARTISTS</p>
+      <h2 class="font-serif text-4xl sm:text-5xl lg:text-6xl mb-6" style="color:var(--plum-deep)">Our Team</h2>
+      <div class="divider-line mx-auto mb-6"></div>
+      <p class="text-sm sm:text-base" style="color:#5B534F">
+        701 Salon &amp; Spa is home to independent stylists and estheticians, each with their own specialty and
+        booking calendar. Tap a card to follow or book directly with the artist.
+      </p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+
+      <!-- Felecia Campbell -->
+      <div class="fade-in-scroll card-lift rounded-3xl overflow-hidden shadow-lg flex flex-col" style="background:var(--paper)">
+        <div class="relative h-56 sm:h-64 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?q=80&w=1974&auto=format&fit=crop" alt="Curly hair styling" class="w-full h-full object-cover">
+        </div>
+        <div class="p-7 sm:p-8 flex flex-col flex-1">
+          <h3 class="font-serif text-2xl sm:text-3xl mb-1" style="color:var(--plum-deep)">Felecia Campbell</h3>
+          <p class="text-xs tracking-wide-plus mb-4" style="color:var(--sage-deep)">CURLY HAIR &amp; COLOR SPECIALIST</p>
+          <p class="text-sm leading-relaxed mb-5" style="color:#5B534F">Curly hair, color specialist, curly hair cuts, braiding.</p>
+          <div class="flex items-center gap-4 mb-6 text-sm" style="color:var(--plum)">
+            <a href="https://www.instagram.com/campbell_creations_hairstylist" target="_blank" rel="noopener" class="flex items-center gap-1.5 hover:opacity-70 transition"><i data-lucide="instagram" class="w-4 h-4"></i>Instagram</a>
+            <a href="https://www.facebook.com" target="_blank" rel="noopener" class="flex items-center gap-1.5 hover:opacity-70 transition"><i data-lucide="facebook" class="w-4 h-4"></i>Facebook</a>
+          </div>
+          <a href="https://glossgenius.com" target="_blank" rel="noopener" class="mt-auto btn-clay text-center px-6 py-3 rounded-full tracking-wide-plus text-xs">BOOK WITH FELECIA</a>
+        </div>
+      </div>
+
+      <!-- Bleachedbykc -->
+      <div class="fade-in-scroll card-lift rounded-3xl overflow-hidden shadow-lg flex flex-col" style="background:var(--paper)">
+        <div class="relative h-56 sm:h-64 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?q=80&w=1974&auto=format&fit=crop" alt="Blonde hair extensions" class="w-full h-full object-cover">
+        </div>
+        <div class="p-7 sm:p-8 flex flex-col flex-1">
+          <h3 class="font-serif text-2xl sm:text-3xl mb-1" style="color:var(--plum-deep)">Bleachedbykc</h3>
+          <p class="text-xs tracking-wide-plus mb-4" style="color:var(--sage-deep)">BLONDING &amp; EXTENSIONS</p>
+          <p class="text-sm leading-relaxed mb-5" style="color:#5B534F">Blonding, lived-in color, cutting, hair extensions.</p>
+          <div class="flex items-center gap-4 mb-6 text-sm" style="color:var(--plum)">
+            <a href="https://www.instagram.com/bleachedbykc" target="_blank" rel="noopener" class="flex items-center gap-1.5 hover:opacity-70 transition"><i data-lucide="instagram" class="w-4 h-4"></i>Instagram</a>
+            <a href="https://www.facebook.com" target="_blank" rel="noopener" class="flex items-center gap-1.5 hover:opacity-70 transition"><i data-lucide="facebook" class="w-4 h-4"></i>Facebook</a>
+          </div>
+          <a href="https://www.instagram.com/bleachedbykc" target="_blank" rel="noopener" class="mt-auto btn-outline text-center px-6 py-3 rounded-full tracking-wide-plus text-xs flex items-center justify-center gap-2">
+            <i data-lucide="message-circle" class="w-4 h-4"></i> DM TO BOOK
+          </a>
+        </div>
+      </div>
+
+      <!-- Savannah Ratliff -->
+      <div class="fade-in-scroll card-lift rounded-3xl overflow-hidden shadow-lg flex flex-col" style="background:var(--paper)">
+        <div class="relative h-56 sm:h-64 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1595473980810-2dbb87ba6d10?q=80&w=1974&auto=format&fit=crop" alt="Balayage highlights" class="w-full h-full object-cover">
+        </div>
+        <div class="p-7 sm:p-8 flex flex-col flex-1">
+          <h3 class="font-serif text-2xl sm:text-3xl mb-1" style="color:var(--plum-deep)">Savannah Ratliff</h3>
+          <p class="text-xs tracking-wide-plus mb-4" style="color:var(--sage-deep)">BALAYAGE &amp; EXTENSIONS</p>
+          <p class="text-sm leading-relaxed mb-5" style="color:#5B534F">Blonding, balayage, hair extensions, lived-in colors.</p>
+          <div class="flex items-center gap-4 mb-6 text-sm" style="color:var(--plum)">
+            <a href="https://www.instagram.com/savvy_thestylist" target="_blank" rel="noopener" class="flex items-center gap-1.5 hover:opacity-70 transition"><i data-lucide="instagram" class="w-4 h-4"></i>Instagram</a>
+            <a href="https://www.facebook.com" target="_blank" rel="noopener" class="flex items-center gap-1.5 hover:opacity-70 transition"><i data-lucide="facebook" class="w-4 h-4"></i>Facebook</a>
+          </div>
+          <a href="https://savannahratliff.glossgenius.com" target="_blank" rel="noopener" class="mt-auto btn-clay text-center px-6 py-3 rounded-full tracking-wide-plus text-xs">BOOK WITH SAVANNAH</a>
+        </div>
+      </div>
+
+      <!-- Beauty by Alaina -->
+      <div class="fade-in-scroll card-lift rounded-3xl overflow-hidden shadow-lg flex flex-col" style="background:var(--paper)">
+        <div class="relative h-56 sm:h-64 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1974&auto=format&fit=crop" alt="Hair color application" class="w-full h-full object-cover">
+        </div>
+        <div class="p-7 sm:p-8 flex flex-col flex-1">
+          <h3 class="font-serif text-2xl sm:text-3xl mb-1" style="color:var(--plum-deep)">Beauty by Alaina</h3>
+          <p class="text-xs tracking-wide-plus mb-4" style="color:var(--sage-deep)">COLOR SPECIALIST</p>
+          <p class="text-sm leading-relaxed mb-5" style="color:#5B534F">Precision color formulation and application.</p>
+          <div class="flex items-center gap-4 mb-6 text-sm" style="color:var(--plum)">
+            <a href="https://www.instagram.com/beautybyalaina" target="_blank" rel="noopener" class="flex items-center gap-1.5 hover:opacity-70 transition"><i data-lucide="instagram" class="w-4 h-4"></i>Instagram</a>
+            <a href="https://www.facebook.com/_beautybyalaina" target="_blank" rel="noopener" class="flex items-center gap-1.5 hover:opacity-70 transition"><i data-lucide="facebook" class="w-4 h-4"></i>Facebook</a>
+          </div>
+          <a href="https://alaina-willoughby.square.site" target="_blank" rel="noopener" class="mt-auto btn-clay text-center px-6 py-3 rounded-full tracking-wide-plus text-xs">BOOK WITH ALAINA</a>
+        </div>
+      </div>
+
+      <!-- Nails by Carrie -->
+      <div class="fade-in-scroll card-lift rounded-3xl overflow-hidden shadow-lg flex flex-col" style="background:var(--paper)">
+        <div class="relative h-56 sm:h-64 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?q=80&w=1974&auto=format&fit=crop" alt="Nail art and manicure" class="w-full h-full object-cover">
+        </div>
+        <div class="p-7 sm:p-8 flex flex-col flex-1">
+          <h3 class="font-serif text-2xl sm:text-3xl mb-1" style="color:var(--plum-deep)">Nails by Carrie</h3>
+          <p class="text-xs tracking-wide-plus mb-4" style="color:var(--sage-deep)">NAIL ARTIST</p>
+          <p class="text-sm leading-relaxed mb-5" style="color:#5B534F">Manicures, nail art, and finishing touches.</p>
+          <div class="flex items-center gap-4 mb-6 text-sm" style="color:var(--plum)">
+            <a href="https://www.instagram.com/nailsbycarrie" target="_blank" rel="noopener" class="flex items-center gap-1.5 hover:opacity-70 transition"><i data-lucide="instagram" class="w-4 h-4"></i>Instagram</a>
+            <a href="https://www.facebook.com/nailsbycarrie" target="_blank" rel="noopener" class="flex items-center gap-1.5 hover:opacity-70 transition"><i data-lucide="facebook" class="w-4 h-4"></i>Facebook</a>
+          </div>
+          <a href="https://carrie-101881.square.site" target="_blank" rel="noopener" class="mt-auto btn-clay text-center px-6 py-3 rounded-full tracking-wide-plus text-xs">BOOK WITH CARRIE</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= 701 X STUDIO ================= -->
+<section class="relative py-20 sm:py-28 lg:py-36 px-5 sm:px-6 lg:px-10" style="background:var(--cream-deep)">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center max-w-2xl mx-auto mb-14 sm:mb-20 fade-in-scroll">
+      <p class="tracking-wide-plusplus text-xs mb-4" style="color:var(--clay-deep)">A SISTER STUDIO</p>
+      <h2 class="font-serif text-4xl sm:text-5xl lg:text-6xl mb-6" style="color:var(--plum-deep)">701 x Studio</h2>
+      <div class="divider-line mx-auto mb-6"></div>
+      <p class="text-sm sm:text-base" style="color:#5B534F">
+        Tattoos, permanent makeup, lash extensions, and brow artistry. We are an all-female operated tattoo studio,
+        and we strive to give the best service in everything tattoo, permanent makeup, and lash extensions.
+      </p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
+
+      <!-- Jess Dixon -->
+      <div class="fade-in-scroll card-lift rounded-3xl overflow-hidden shadow-lg flex flex-col" style="background:var(--paper)">
+        <div class="relative h-56 sm:h-64 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?q=80&w=1974&auto=format&fit=crop" alt="Tattoo artist at work" class="w-full h-full object-cover">
+        </div>
+        <div class="p-7 sm:p-8 flex flex-col flex-1">
+          <h3 class="font-serif text-2xl sm:text-3xl mb-1" style="color:var(--plum-deep)">Jess Dixon</h3>
+          <p class="text-xs tracking-wide-plus mb-4" style="color:var(--sage-deep)">TATTOO ARTIST</p>
+          <div class="flex items-center gap-4 mb-6 text-sm" style="color:var(--plum)">
+            <a href="https://www.instagram.com/xxjmellowtattooxx" target="_blank" rel="noopener" class="flex items-center gap-1.5 hover:opacity-70 transition"><i data-lucide="instagram" class="w-4 h-4"></i>Instagram</a>
+            <a href="https://www.facebook.com" target="_blank" rel="noopener" class="flex items-center gap-1.5 hover:opacity-70 transition"><i data-lucide="facebook" class="w-4 h-4"></i>Facebook</a>
+          </div>
+          <a href="https://www.instagram.com/xxjmellowtattooxx" target="_blank" rel="noopener" class="mt-auto btn-outline text-center px-6 py-3 rounded-full tracking-wide-plus text-xs flex items-center justify-center gap-2">
+            <i data-lucide="message-circle" class="w-4 h-4"></i> DM TO BOOK
+          </a>
+        </div>
+      </div>
+
+      <!-- Arch Angel -->
+      <div class="fade-in-scroll card-lift rounded-3xl overflow-hidden shadow-lg flex flex-col" style="background:var(--paper)">
+        <div class="relative h-56 sm:h-64 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?q=80&w=1974&auto=format&fit=crop" alt="Permanent makeup and brow artistry" class="w-full h-full object-cover">
+        </div>
+        <div class="p-7 sm:p-8 flex flex-col flex-1">
+          <h3 class="font-serif text-2xl sm:text-3xl mb-1" style="color:var(--plum-deep)">Arch Angel</h3>
+          <p class="text-xs tracking-wide-plus mb-4" style="color:var(--sage-deep)">PMU ARTIST &amp; LASH ARTIST</p>
+          <div class="flex items-center gap-4 mb-6 text-sm" style="color:var(--plum)">
+            <a href="https://www.instagram.com/arch.angelpmu" target="_blank" rel="noopener" class="flex items-center gap-1.5 hover:opacity-70 transition"><i data-lucide="instagram" class="w-4 h-4"></i>Instagram</a>
+            <a href="https://www.facebook.com" target="_blank" rel="noopener" class="flex items-center gap-1.5 hover:opacity-70 transition"><i data-lucide="facebook" class="w-4 h-4"></i>Facebook</a>
+          </div>
+          <a href="https://archangelbrowdesign.glossgenius.com" target="_blank" rel="noopener" class="mt-auto btn-clay text-center px-6 py-3 rounded-full tracking-wide-plus text-xs">BOOK WITH ARCH ANGEL</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= GALLERY ================= -->
+<section id="gallery" class="relative py-20 sm:py-28 lg:py-36 px-5 sm:px-6 lg:px-10">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-16 fade-in-scroll">
+      <div>
+        <p class="tracking-wide-plusplus text-xs mb-4" style="color:var(--clay-deep)">GET INSPIRED</p>
+        <h2 class="font-serif text-5xl lg:text-6xl" style="color:var(--plum-deep)">Recent Work</h2>
+      </div>
+      <a href="https://www.instagram.com/701salonandspa" target="_blank" rel="noopener"
+         class="mt-6 sm:mt-0 inline-flex items-center gap-2 text-sm tracking-wide-plus underline-grow" style="color:var(--plum)">
+        <i data-lucide="instagram" class="w-4 h-4"></i> FOLLOW @701SALONANDSPA
+      </a>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 auto-rows-[140px] sm:auto-rows-[220px]">
+      <div class="fade-in-scroll row-span-2 rounded-2xl overflow-hidden group relative">
+        <img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?q=80&w=1974&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="Balayage waves">
+      </div>
+      <div class="fade-in-scroll rounded-2xl overflow-hidden group relative">
+        <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?q=80&w=1974&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="Salon chair styling">
+      </div>
+      <div class="fade-in-scroll rounded-2xl overflow-hidden group relative">
+        <img src="https://images.unsplash.com/photo-1522337194846-2020e34e2f24?q=80&w=1974&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="Facial treatment spa">
+      </div>
+      <div class="fade-in-scroll row-span-2 rounded-2xl overflow-hidden group relative">
+        <img src="https://images.unsplash.com/photo-1526045612212-70caf35c14df?q=80&w=1974&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="Blonde balayage result">
+      </div>
+      <div class="fade-in-scroll rounded-2xl overflow-hidden group relative">
+        <img src="https://images.unsplash.com/photo-1522336572468-97b06e8ef143?q=80&w=1974&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="Product shelf salon">
+      </div>
+      <div class="fade-in-scroll rounded-2xl overflow-hidden group relative">
+        <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?q=80&w=1974&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="Hair coloring process">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TESTIMONIALS ================= -->
+<section class="relative py-20 sm:py-28 lg:py-36 px-5 sm:px-6 lg:px-10 overflow-hidden" style="background:var(--plum-deep)">
+  <div class="max-w-4xl mx-auto text-center relative z-10">
+    <p class="tracking-wide-plusplus text-xs mb-4" style="color:var(--gold)">CLIENT LOVE</p>
+    <h2 class="font-serif text-5xl lg:text-6xl mb-4" style="color:var(--paper)">What They're Saying</h2>
+    <div class="flex justify-center gap-1 mb-14">
+      <i data-lucide="star" class="w-5 h-5 fill-current" style="color:var(--gold)"></i>
+      <i data-lucide="star" class="w-5 h-5 fill-current" style="color:var(--gold)"></i>
+      <i data-lucide="star" class="w-5 h-5 fill-current" style="color:var(--gold)"></i>
+      <i data-lucide="star" class="w-5 h-5 fill-current" style="color:var(--gold)"></i>
+      <i data-lucide="star" class="w-5 h-5 fill-current" style="color:var(--gold)"></i>
+    </div>
+
+    <div id="testimonialWrap" class="min-h-[220px] relative">
+      <div class="testimonial-slide active">
+        <p class="font-serif text-2xl sm:text-3xl leading-relaxed" style="color:#F1E9DC">
+          "Hands down the best balayage I've ever had. The salon feels so calm and put-together, and my stylist
+          actually listened to what I wanted."
+        </p>
+        <p class="mt-8 tracking-wide-plus text-sm" style="color:var(--gold)">— HALEY M.</p>
+      </div>
+      <div class="testimonial-slide">
+        <p class="font-serif text-2xl sm:text-3xl leading-relaxed" style="color:#F1E9DC">
+          "The facial was incredibly relaxing and my skin has never looked better. This is officially my monthly
+          reset spot."
+        </p>
+        <p class="mt-8 tracking-wide-plus text-sm" style="color:var(--gold)">— COURTNEY R.</p>
+      </div>
+      <div class="testimonial-slide">
+        <p class="font-serif text-2xl sm:text-3xl leading-relaxed" style="color:#F1E9DC">
+          "Booked the full refresh package before a big trip and left feeling like a completely new person. Worth
+          every penny."
+        </p>
+        <p class="mt-8 tracking-wide-plus text-sm" style="color:var(--gold)">— AMANDA T.</p>
+      </div>
+    </div>
+
+    <div class="flex justify-center gap-2 mt-10" id="dots">
+      <button class="dot active" data-i="0"></button>
+      <button class="dot" data-i="1"></button>
+      <button class="dot" data-i="2"></button>
+    </div>
+
+    <div class="mt-14 flex flex-wrap items-center justify-center gap-6 text-xs tracking-wide-plus" style="color:#C9BBA9">
+      <a href="https://m.yelp.com" target="_blank" rel="noopener" class="flex items-center gap-2 hover:opacity-70 transition">
+        <i data-lucide="star" class="w-4 h-4"></i> FIND US ON YELP
+      </a>
+      <span class="opacity-40">|</span>
+      <a href="https://www.facebook.com/701salonandspa" target="_blank" rel="noopener" class="flex items-center gap-2 hover:opacity-70 transition">
+        <i data-lucide="facebook" class="w-4 h-4"></i> FACEBOOK REVIEWS
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT / CTA ================= -->
+<section id="contact" class="relative py-20 sm:py-28 lg:py-32 px-5 sm:px-6 lg:px-10">
+  <div class="max-w-5xl mx-auto text-center fade-in-scroll">
+    <p class="tracking-wide-plusplus text-xs mb-4" style="color:var(--clay-deep)">READY WHEN YOU ARE</p>
+    <h2 class="font-serif text-5xl lg:text-7xl leading-tight mb-8" style="color:var(--plum-deep)">
+      Let's Get You Booked
+    </h2>
+    <p class="max-w-xl mx-auto text-lg mb-10" style="color:#5B534F">
+      Walk-ins are welcome when space allows, but we recommend booking ahead to lock in your preferred stylist and time.
+    </p>
+    <a href="https://square.site/book/7M7D8F14SMT57/beka-ballard-e-town-ky" target="_blank" rel="noopener"
+       class="btn-clay inline-block px-12 py-4 rounded-full tracking-wide-plus text-sm">
+      BOOK AN APPOINTMENT
+    </a>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="relative pt-16 sm:pt-20 pb-10 px-5 sm:px-6 lg:px-10" style="background:var(--charcoal); color:#D8CFC5">
+  <div class="max-w-7xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-12 mb-12 sm:mb-16">
+
+    <div>
+      <p class="font-serif text-3xl mb-4" style="color:var(--paper)">701 <span class="text-xs tracking-wide-plus font-sans">SALON &amp; SPA</span></p>
+      <p class="text-sm leading-relaxed" style="color:#A79E93">
+        Modern boho hair design and esthetics in the heart of Elizabethtown, Kentucky.
+      </p>
+      <div class="flex gap-4 mt-6">
+        <a href="https://www.instagram.com/701salonandspa" target="_blank" rel="noopener" class="w-10 h-10 rounded-full border border-white/15 flex items-center justify-center hover:bg-white/10 transition">
+          <i data-lucide="instagram" class="w-4 h-4"></i>
+        </a>
+        <a href="https://www.facebook.com/701salonandspa" target="_blank" rel="noopener" class="w-10 h-10 rounded-full border border-white/15 flex items-center justify-center hover:bg-white/10 transition">
+          <i data-lucide="facebook" class="w-4 h-4"></i>
+        </a>
+        <a href="https://m.yelp.com" target="_blank" rel="noopener" class="w-10 h-10 rounded-full border border-white/15 flex items-center justify-center hover:bg-white/10 transition">
+          <i data-lucide="star" class="w-4 h-4"></i>
+        </a>
+      </div>
+    </div>
+
+    <div>
+      <p class="tracking-wide-plusplus text-xs mb-5" style="color:var(--gold)">QUICK LINKS</p>
+      <ul class="space-y-3 text-sm">
+        <li><a href="#home" class="hover:text-white transition">Home</a></li>
+        <li><a href="#services" class="hover:text-white transition">Services</a></li>
+        <li><a href="#about" class="hover:text-white transition">About</a></li>
+        <li><a href="#gallery" class="hover:text-white transition">Gallery</a></li>
+        <li><a href="https://square.site/book/7M7D8F14SMT57/beka-ballard-e-town-ky" target="_blank" rel="noopener" class="hover:text-white transition">Book Online</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <p class="tracking-wide-plusplus text-xs mb-5" style="color:var(--gold)">HOURS</p>
+      <ul class="space-y-2 text-sm" style="color:#A79E93">
+        <li class="flex justify-between gap-6"><span>Mon</span><span>Closed</span></li>
+        <li class="flex justify-between gap-6"><span>Tue – Fri</span><span>9:00 – 6:00</span></li>
+        <li class="flex justify-between gap-6"><span>Saturday</span><span>9:00 – 3:00</span></li>
+        <li class="flex justify-between gap-6"><span>Sunday</span><span>Closed</span></li>
+      </ul>
+    </div>
+
+    <div>
+      <p class="tracking-wide-plusplus text-xs mb-5" style="color:var(--gold)">VISIT US</p>
+      <p class="text-sm mb-5" style="color:#A79E93">1111 N Dixie Hwy<br>Elizabethtown, KY</p>
+      <a href="https://www.google.com/maps/search/?api=1&query=1111+N+Dixie+Hwy+Elizabethtown+KY"
+         target="_blank" rel="noopener"
+         class="inline-flex items-center gap-2 text-sm border border-white/20 rounded-full px-5 py-2.5 hover:bg-white/10 transition">
+        <i data-lucide="map-pin" class="w-4 h-4"></i> GET DIRECTIONS
+      </a>
+    </div>
+  </div>
+
+  <div class="max-w-7xl mx-auto pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs" style="color:#7A7168">
+    <p>&copy; <span id="year"></span> 701 Salon &amp; Spa. All rights reserved.</p>
+    <p>1111 N Dixie Hwy, Elizabethtown, KY</p>
+  </div>
+</footer>
+
+<script>
+  lucide.createIcons();
+
+  // nav scroll state
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  });
+
+  // mobile menu toggle
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  menuBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+
+  // scroll reveal
+  const revealEls = document.querySelectorAll('.fade-in-scroll');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in-view');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+
+  // testimonial slider
+  const slides = document.querySelectorAll('.testimonial-slide');
+  const dots = document.querySelectorAll('.dot');
+  let current = 0;
+  function showSlide(i){
+    slides.forEach((s, idx) => s.classList.toggle('active', idx === i));
+    dots.forEach((d, idx) => d.classList.toggle('active', idx === i));
+    current = i;
+  }
+  dots.forEach(d => d.addEventListener('click', () => showSlide(parseInt(d.dataset.i))));
+  setInterval(() => showSlide((current + 1) % slides.length), 5500);
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
