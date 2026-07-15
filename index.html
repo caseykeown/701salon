@@ -178,6 +178,85 @@
     border-color: var(--clay-deep);
   }
 
+  /* ===== PREVIEW BUILD ONLY — delete this block + matching HTML/JS to ship ===== */
+  .ck-watermark{
+    position: fixed;
+    inset: 0;
+    z-index: 9998;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .ck-watermark span{
+    font-family: 'Jost', sans-serif;
+    font-weight: 400;
+    font-size: clamp(1.5rem, 5.5vw, 4rem);
+    letter-spacing: 0.28em;
+    white-space: nowrap;
+    transform: rotate(-28deg);
+    color: rgba(62,50,47,0.055);
+    text-transform: uppercase;
+    user-select: none;
+  }
+
+  .ck-bar{
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    z-index: 9999;
+    background: rgba(35,32,30,0.94);
+    backdrop-filter: blur(12px) saturate(140%);
+    -webkit-backdrop-filter: blur(12px) saturate(140%);
+    border-top: 1px solid rgba(183,153,107,0.35);
+    transform: translateY(0);
+    transition: transform .5s cubic-bezier(.22,1,.36,1);
+  }
+  .ck-bar.hidden-bar{ transform: translateY(110%); }
+  .ck-bar-inner{
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 0.85rem 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .ck-tag{
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    padding: 3px 9px;
+    border-radius: 9999px;
+    border: 1px solid rgba(183,153,107,0.5);
+    color: #B7996B;
+    white-space: nowrap;
+  }
+  .ck-credit{
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: #D8CFC5;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .ck-credit strong{ color: var(--paper); font-weight: 500; }
+  .ck-credit .sep{ color: rgba(183,153,107,0.6); margin: 0 .5rem; }
+  .ck-dismiss{
+    flex-shrink: 0;
+    width: 30px; height: 30px;
+    border-radius: 9999px;
+    border: 1px solid rgba(255,255,255,0.18);
+    display: flex; align-items: center; justify-content: center;
+    color: #A79E93;
+    transition: all .3s ease;
+  }
+  .ck-dismiss:hover{ background: rgba(255,255,255,0.1); color: var(--paper); }
+  @media (max-width: 640px){
+    .ck-credit .sub{ display: none; }
+    .ck-bar-inner{ padding: 0.7rem 1rem; }
+  }
+  /* ===== END PREVIEW BUILD BLOCK ===== */
+
   ::selection{
     background: var(--clay);
     color: var(--paper);
@@ -285,7 +364,8 @@
       Beauty, Slowed<br class="hidden sm:block"> Down &amp; Done Right
     </h1>
     <p class="reveal d3 max-w-xl mt-6 sm:mt-7 text-sm sm:text-lg font-light px-2" style="color:#EFE6D8">
-      A warm, sunlit space for hair design, color, and esthetics — where every visit feels like an exhale.
+      A house of independent artists in Elizabethtown. Curls, blondes, extensions, nails, ink. Find your person
+      and stay a while.
     </p>
     <div class="reveal d4 mt-8 sm:mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto px-4 sm:px-0">
       <a href="https://square.site/book/7M7D8F14SMT57/beka-ballard-e-town-ky" target="_blank" rel="noopener"
@@ -333,32 +413,34 @@
 
     <div class="fade-in-scroll">
       <p class="tracking-wide-plusplus text-xs mb-4" style="color:var(--clay-deep)">OUR STORY</p>
-      <h2 class="font-serif text-5xl lg:text-6xl leading-tight mb-6" style="color:var(--plum-deep)">
+      <h2 class="font-serif text-4xl sm:text-5xl lg:text-6xl leading-tight mb-6" style="color:var(--plum-deep)">
         A Little Bohemian, <br>A Lot of Heart
       </h2>
       <div class="divider-line mb-8"></div>
-      <p class="text-lg leading-relaxed mb-6" style="color:#4B4340">
-        Tucked into the heart of Elizabethtown, 701 Salon &amp; Spa was built around a simple idea: getting your
-        hair or skin done should feel like time well spent, not a task to rush through. Our space blends warm
-        textures, soft light, and organic touches with the precision and artistry of a truly professional team.
+      <p class="text-base sm:text-lg leading-relaxed mb-6" style="color:#4B4340">
+        701 Salon &amp; Spa isn't one chair and one point of view. It's a house of independent artists who chose to
+        work under the same roof, each running their own book, each bringing a specialty the others don't have.
+        Curly cutting. Blonding. Extensions. Color correction. Nails. Tattoo and permanent makeup next door at
+        701 Studio.
       </p>
-      <p class="text-lg leading-relaxed mb-10" style="color:#4B4340">
-        From lived-in balayage to relaxing facials, every service is approached with the same intention: listen
-        closely, work carefully, and send you out feeling like the best version of yourself.
+      <p class="text-base sm:text-lg leading-relaxed mb-10" style="color:#4B4340">
+        What ties it together is the room itself: plants in every corner, snacks and cold drinks on the shelf,
+        seating you'd actually want to sit in, and a crew that our clients describe as down to earth and
+        genuinely fun. Come once and it stops feeling like an appointment.
       </p>
 
       <div class="grid grid-cols-3 gap-3 sm:gap-6 mb-10">
         <div>
-          <p class="font-serif text-3xl sm:text-4xl" style="color:var(--clay-deep)">10+</p>
-          <p class="text-[10px] sm:text-xs tracking-wide-plus mt-1" style="color:var(--sage-deep)">YEARS IN E-TOWN</p>
-        </div>
-        <div>
-          <p class="font-serif text-3xl sm:text-4xl" style="color:var(--clay-deep)">5.0</p>
-          <p class="text-[10px] sm:text-xs tracking-wide-plus mt-1" style="color:var(--sage-deep)">AVERAGE RATING</p>
+          <p class="font-serif text-3xl sm:text-4xl" style="color:var(--clay-deep)">2021</p>
+          <p class="text-[10px] sm:text-xs tracking-wide-plus mt-1" style="color:var(--sage-deep)">OPENED IN E-TOWN</p>
         </div>
         <div>
           <p class="font-serif text-3xl sm:text-4xl" style="color:var(--clay-deep)">100%</p>
-          <p class="text-[10px] sm:text-xs tracking-wide-plus mt-1" style="color:var(--sage-deep)">HAND-MIXED COLOR</p>
+          <p class="text-[10px] sm:text-xs tracking-wide-plus mt-1" style="color:var(--sage-deep)">RECOMMEND US</p>
+        </div>
+        <div>
+          <p class="font-serif text-3xl sm:text-4xl" style="color:var(--clay-deep)">8</p>
+          <p class="text-[10px] sm:text-xs tracking-wide-plus mt-1" style="color:var(--sage-deep)">INDEPENDENT ARTISTS</p>
         </div>
       </div>
 
@@ -463,6 +545,54 @@
   </div>
 </section>
 
+<!-- ================= OWNER ================= -->
+<section class="relative py-20 sm:py-28 lg:py-32 px-5 sm:px-6 lg:px-10 overflow-hidden" style="background:var(--paper)">
+  <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+    <div class="fade-in-scroll order-2 lg:order-1">
+      <p class="tracking-wide-plusplus text-xs mb-4" style="color:var(--clay-deep)">THE OWNER</p>
+      <h2 class="font-serif text-4xl sm:text-5xl lg:text-6xl leading-tight mb-6" style="color:var(--plum-deep)">
+        Beka Ballard
+      </h2>
+      <div class="divider-line mb-8"></div>
+      <p class="text-base sm:text-lg leading-relaxed mb-6" style="color:#4B4340">
+        Beka opened 701 in 2021 with a specific idea in mind: build the kind of salon where talented people could
+        do their best work without being managed into someone else's mold, and where clients get greeted by name
+        the second they walk through the door.
+      </p>
+      <p class="text-base sm:text-lg leading-relaxed mb-8" style="color:#4B4340">
+        Clients have followed her for years, and the reviews keep landing on the same two words: her work, and her
+        welcome. Both are the reason this place feels the way it does.
+      </p>
+
+      <blockquote class="pl-5 border-l-2 mb-9" style="border-color:var(--clay)">
+        <p class="font-serif text-xl sm:text-2xl italic leading-relaxed" style="color:var(--plum)">
+          "I've been seeing my girl Beka now for a little over six years. The work she does is truly amazing and
+          the customer service is top-notch."
+        </p>
+        <footer class="text-xs tracking-wide-plus mt-3" style="color:var(--sage-deep)">LACEY S. — FACEBOOK REVIEW</footer>
+      </blockquote>
+
+      <a href="https://square.site/book/7M7D8F14SMT57/beka-ballard-e-town-ky" target="_blank" rel="noopener"
+         class="btn-clay inline-block px-9 py-3.5 rounded-full tracking-wide-plus text-sm">
+        BOOK WITH BEKA
+      </a>
+    </div>
+
+    <div class="relative fade-in-scroll order-1 lg:order-2">
+      <div class="relative rounded-[2rem] overflow-hidden shadow-2xl">
+        <img src="IMG_0178.jpeg" alt="Beka Ballard, owner of 701 Salon & Spa"
+             class="w-full h-[380px] sm:h-[520px] lg:h-[600px] object-cover">
+      </div>
+      <div class="absolute -bottom-5 -left-3 sm:-left-6 px-6 py-4 rounded-2xl shadow-xl" style="background:var(--clay)">
+        <p class="font-serif text-2xl sm:text-3xl leading-none" style="color:var(--paper)">701</p>
+        <p class="text-[10px] tracking-wide-plus mt-1" style="color:#F3DFD2">OWNER &amp; STYLIST</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <!-- ================= TEAM ================= -->
 <section id="team" class="relative py-20 sm:py-28 lg:py-36 px-5 sm:px-6 lg:px-10">
   <div class="max-w-7xl mx-auto">
@@ -471,8 +601,8 @@
       <h2 class="font-serif text-4xl sm:text-5xl lg:text-6xl mb-6" style="color:var(--plum-deep)">Our Team</h2>
       <div class="divider-line mx-auto mb-6"></div>
       <p class="text-sm sm:text-base" style="color:#5B534F">
-        701 Salon &amp; Spa is home to independent stylists and estheticians, each with their own specialty and
-        booking calendar. Tap a card to follow or book directly with the artist.
+        Every artist at 701 runs their own book. Find the one whose work matches what you're after, then book
+        straight with them. No front desk, no gatekeeping, no getting handed to whoever's free.
       </p>
     </div>
 
@@ -562,6 +692,23 @@
             <a href="https://www.facebook.com/nailsbycarrie" target="_blank" rel="noopener" class="flex items-center gap-1.5 hover:opacity-70 transition"><i data-lucide="facebook" class="w-4 h-4"></i>Facebook</a>
           </div>
           <a href="https://carrie-101881.square.site" target="_blank" rel="noopener" class="mt-auto btn-clay text-center px-6 py-3 rounded-full tracking-wide-plus text-xs">BOOK WITH CARRIE</a>
+        </div>
+      </div>
+
+      <!-- Addy Durbin -->
+      <div class="fade-in-scroll card-lift rounded-3xl overflow-hidden shadow-lg flex flex-col" style="background:var(--paper)">
+        <div class="relative h-56 sm:h-64 overflow-hidden">
+          <img src="IMG_0183.jpeg" alt="Addy Durbin, stylist at 701 Salon & Spa" class="w-full h-full object-cover">
+        </div>
+        <div class="p-7 sm:p-8 flex flex-col flex-1">
+          <h3 class="font-serif text-2xl sm:text-3xl mb-1" style="color:var(--plum-deep)">Addy Durbin</h3>
+          <p class="text-xs tracking-wide-plus mb-4" style="color:var(--sage-deep)">HAIR &amp; BEAUTY</p>
+          <p class="text-sm leading-relaxed mb-5" style="color:#5B534F">Addyfaith Beauty.</p>
+          <div class="flex items-center gap-4 mb-6 text-sm" style="color:var(--plum)">
+            <a href="https://www.instagram.com/addyfaithbeauty" target="_blank" rel="noopener" class="flex items-center gap-1.5 hover:opacity-70 transition"><i data-lucide="instagram" class="w-4 h-4"></i>Instagram</a>
+            <a href="https://www.facebook.com/share/1Nz5uYWPVu/" target="_blank" rel="noopener" class="flex items-center gap-1.5 hover:opacity-70 transition"><i data-lucide="facebook" class="w-4 h-4"></i>Facebook</a>
+          </div>
+          <a href="https://glossgenius.com" target="_blank" rel="noopener" class="mt-auto btn-clay text-center px-6 py-3 rounded-full tracking-wide-plus text-xs">BOOK WITH ADDY</a>
         </div>
       </div>
 
@@ -666,13 +813,19 @@
         <img src="IMG_0171.jpeg" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="701 Salon & Spa storefront">
       </div>
       <div class="gallery-tile flex-shrink-0 snap-start w-64 sm:w-80 h-80 sm:h-96 rounded-2xl overflow-hidden group relative">
-        <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?q=80&w=1974&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="Salon chair styling">
+        <img src="IMG_0184.jpeg" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="Client hair result at 701 Salon & Spa">
       </div>
       <div class="gallery-tile flex-shrink-0 snap-start w-64 sm:w-80 h-80 sm:h-96 rounded-2xl overflow-hidden group relative">
-        <img src="https://images.unsplash.com/photo-1522337194846-2020e34e2f24?q=80&w=1974&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="Facial treatment spa">
+        <img src="IMG_0185.jpeg" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="Client hair result at 701 Salon & Spa">
       </div>
       <div class="gallery-tile flex-shrink-0 snap-start w-64 sm:w-80 h-80 sm:h-96 rounded-2xl overflow-hidden group relative">
-        <img src="https://images.unsplash.com/photo-1526045612212-70caf35c14df?q=80&w=1974&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="Blonde balayage result">
+        <img src="IMG_0186.jpeg" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="Client hair result at 701 Salon & Spa">
+      </div>
+      <div class="gallery-tile flex-shrink-0 snap-start w-64 sm:w-80 h-80 sm:h-96 rounded-2xl overflow-hidden group relative">
+        <img src="IMG_0187.jpeg" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="Client hair result at 701 Salon & Spa">
+      </div>
+      <div class="gallery-tile flex-shrink-0 snap-start w-64 sm:w-80 h-80 sm:h-96 rounded-2xl overflow-hidden group relative">
+        <img src="IMG_0188.jpeg" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="Client hair result at 701 Salon & Spa">
       </div>
 
       <!-- upload tile: stays pinned at the end of the track -->
@@ -695,51 +848,95 @@
 <section class="relative py-20 sm:py-28 lg:py-36 px-5 sm:px-6 lg:px-10 overflow-hidden" style="background:var(--plum-deep)">
   <div class="max-w-4xl mx-auto text-center relative z-10">
     <p class="tracking-wide-plusplus text-xs mb-4" style="color:var(--gold)">CLIENT LOVE</p>
-    <h2 class="font-serif text-5xl lg:text-6xl mb-4" style="color:var(--paper)">What They're Saying</h2>
-    <div class="flex justify-center gap-1 mb-14">
-      <i data-lucide="star" class="w-5 h-5 fill-current" style="color:var(--gold)"></i>
-      <i data-lucide="star" class="w-5 h-5 fill-current" style="color:var(--gold)"></i>
-      <i data-lucide="star" class="w-5 h-5 fill-current" style="color:var(--gold)"></i>
-      <i data-lucide="star" class="w-5 h-5 fill-current" style="color:var(--gold)"></i>
-      <i data-lucide="star" class="w-5 h-5 fill-current" style="color:var(--gold)"></i>
-    </div>
+    <h2 class="font-serif text-4xl sm:text-5xl lg:text-6xl mb-10" style="color:var(--paper)">100% Recommend</h2>
 
-    <div id="testimonialWrap" class="min-h-[220px] relative">
+    <div id="testimonialWrap" class="min-h-[280px] sm:min-h-[240px] relative">
+
       <div class="testimonial-slide active">
-        <p class="font-serif text-2xl sm:text-3xl leading-relaxed" style="color:#F1E9DC">
-          "Hands down the best balayage I've ever had. The salon feels so calm and put-together, and my stylist
-          actually listened to what I wanted."
+        <p class="font-serif text-xl sm:text-2xl lg:text-3xl leading-relaxed" style="color:#F1E9DC">
+          "I had the absolute best haircut I've had in years thanks to Felecia! She's incredibly detailed and
+          really understands how to work with curly hair. The way she shaped and styled my curls brought them
+          back to life."
         </p>
-        <p class="mt-8 tracking-wide-plus text-sm" style="color:var(--gold)">— HALEY M.</p>
+        <p class="mt-7 tracking-wide-plus text-xs sm:text-sm" style="color:var(--gold)">AYALA PEREZ JO — OCT 2025</p>
       </div>
+
       <div class="testimonial-slide">
-        <p class="font-serif text-2xl sm:text-3xl leading-relaxed" style="color:#F1E9DC">
-          "The facial was incredibly relaxing and my skin has never looked better. This is officially my monthly
-          reset spot."
+        <p class="font-serif text-xl sm:text-2xl lg:text-3xl leading-relaxed" style="color:#F1E9DC">
+          "Savannah has been my best friend for a very long time and as a hair stylist myself, she is the ONLY
+          person I let color my hair! She always makes time for all of her clients and she is amazing at what
+          she does. 10/10 would definitely recommend!"
         </p>
-        <p class="mt-8 tracking-wide-plus text-sm" style="color:var(--gold)">— COURTNEY R.</p>
+        <p class="mt-7 tracking-wide-plus text-xs sm:text-sm" style="color:var(--gold)">KAITLYN RAY MCGONIGLE — MAR 2025</p>
       </div>
+
       <div class="testimonial-slide">
-        <p class="font-serif text-2xl sm:text-3xl leading-relaxed" style="color:#F1E9DC">
-          "Booked the full refresh package before a big trip and left feeling like a completely new person. Worth
-          every penny."
+        <p class="font-serif text-xl sm:text-2xl lg:text-3xl leading-relaxed" style="color:#F1E9DC">
+          "Savannah is an amazing hairstylist and a color magician! I recommend her every chance I get!!!"
         </p>
-        <p class="mt-8 tracking-wide-plus text-sm" style="color:var(--gold)">— AMANDA T.</p>
+        <p class="mt-7 tracking-wide-plus text-xs sm:text-sm" style="color:var(--gold)">LESLEY WHEELER — MAR 2025</p>
       </div>
+
+      <div class="testimonial-slide">
+        <p class="font-serif text-xl sm:text-2xl lg:text-3xl leading-relaxed" style="color:#F1E9DC">
+          "Savannah is a wonderful hair stylist and sweet as can be. Highly recommend!"
+        </p>
+        <p class="mt-7 tracking-wide-plus text-xs sm:text-sm" style="color:var(--gold)">KATLIN DAVIS — MAR 2025</p>
+      </div>
+
+      <div class="testimonial-slide">
+        <p class="font-serif text-xl sm:text-2xl lg:text-3xl leading-relaxed" style="color:#F1E9DC">
+          "Absolutely love this salon!! I've been seeing my girl Beka now for a little over six years. The work
+          she does is truly amazing and the customer service is top-notch. All of the stylists I have met are
+          beyond nice and truly wonderful at what they do."
+        </p>
+        <p class="mt-7 tracking-wide-plus text-xs sm:text-sm" style="color:var(--gold)">LACEY SELL — MAY 2024</p>
+      </div>
+
+      <div class="testimonial-slide">
+        <p class="font-serif text-xl sm:text-2xl lg:text-3xl leading-relaxed" style="color:#F1E9DC">
+          "I always look forward to my visits at Campbell Creations at 701 Salon and Spa, where I have the
+          pleasure of seeing Felecia. Every time I walk in, I am greeted by the owner whose infectious smile
+          lights up the entire room. What sets this salon apart is their attention to detail."
+        </p>
+        <p class="mt-7 tracking-wide-plus text-xs sm:text-sm" style="color:var(--gold)">BRIA HUMBLE — MAY 2024</p>
+      </div>
+
+      <div class="testimonial-slide">
+        <p class="font-serif text-xl sm:text-2xl lg:text-3xl leading-relaxed" style="color:#F1E9DC">
+          "Thank you thank you thank you. So in love with my new color. Alaina you are amazing."
+        </p>
+        <p class="mt-7 tracking-wide-plus text-xs sm:text-sm" style="color:var(--gold)">JESSICA MCCAFFREY LOMBARDI — FEB 2024</p>
+      </div>
+
+      <div class="testimonial-slide">
+        <p class="font-serif text-xl sm:text-2xl lg:text-3xl leading-relaxed" style="color:#F1E9DC">
+          "My kids and I are a hot mess and we like it that way. The first time we left there my daughter said
+          mom they're all so cool in there and so welcoming, it feels like home and we've known them forever.
+          They're all great there and down to earth and just so fun."
+        </p>
+        <p class="mt-7 tracking-wide-plus text-xs sm:text-sm" style="color:var(--gold)">KARLINE LOPEZ — SEP 2023</p>
+      </div>
+
     </div>
 
-    <div class="flex justify-center gap-2 mt-10" id="dots">
-      <button class="dot active" data-i="0"></button>
-      <button class="dot" data-i="1"></button>
-      <button class="dot" data-i="2"></button>
+    <div class="flex justify-center gap-2 mt-10 flex-wrap" id="dots">
+      <button class="dot active" data-i="0" aria-label="Review 1"></button>
+      <button class="dot" data-i="1" aria-label="Review 2"></button>
+      <button class="dot" data-i="2" aria-label="Review 3"></button>
+      <button class="dot" data-i="3" aria-label="Review 4"></button>
+      <button class="dot" data-i="4" aria-label="Review 5"></button>
+      <button class="dot" data-i="5" aria-label="Review 6"></button>
+      <button class="dot" data-i="6" aria-label="Review 7"></button>
+      <button class="dot" data-i="7" aria-label="Review 8"></button>
     </div>
 
     <div class="mt-14 flex flex-wrap items-center justify-center gap-6 text-xs tracking-wide-plus" style="color:#C9BBA9">
-      <a href="https://m.yelp.com" target="_blank" rel="noopener" class="flex items-center gap-2 hover:opacity-70 transition">
+      <a href="https://www.yelp.com/biz/701-salon-and-spa-elizabethtown" target="_blank" rel="noopener" class="flex items-center gap-2 hover:opacity-70 transition">
         <i data-lucide="star" class="w-4 h-4"></i> FIND US ON YELP
       </a>
       <span class="opacity-40">|</span>
-      <a href="https://www.facebook.com/701salonandspa" target="_blank" rel="noopener" class="flex items-center gap-2 hover:opacity-70 transition">
+      <a href="https://www.facebook.com/p/701-Salon-Spa-100075735354298/" target="_blank" rel="noopener" class="flex items-center gap-2 hover:opacity-70 transition">
         <i data-lucide="facebook" class="w-4 h-4"></i> FACEBOOK REVIEWS
       </a>
     </div>
@@ -770,16 +967,17 @@
     <div>
       <p class="font-serif text-3xl mb-4" style="color:var(--paper)">701 <span class="text-xs tracking-wide-plus font-sans">SALON &amp; SPA</span></p>
       <p class="text-sm leading-relaxed" style="color:#A79E93">
-        Modern boho hair design and esthetics in the heart of Elizabethtown, Kentucky.
+        A modern, woman-owned salon in the heart of Elizabethtown, Kentucky, offering expert hair design,
+        esthetics, and tattoo services in the area's most vibrant, welcoming atmosphere.
       </p>
       <div class="flex gap-4 mt-6">
         <a href="https://www.instagram.com/701salonandspa" target="_blank" rel="noopener" class="w-10 h-10 rounded-full border border-white/15 flex items-center justify-center hover:bg-white/10 transition">
           <i data-lucide="instagram" class="w-4 h-4"></i>
         </a>
-        <a href="https://www.facebook.com/701salonandspa" target="_blank" rel="noopener" class="w-10 h-10 rounded-full border border-white/15 flex items-center justify-center hover:bg-white/10 transition">
+        <a href="https://www.facebook.com/p/701-Salon-Spa-100075735354298/" target="_blank" rel="noopener" class="w-10 h-10 rounded-full border border-white/15 flex items-center justify-center hover:bg-white/10 transition">
           <i data-lucide="facebook" class="w-4 h-4"></i>
         </a>
-        <a href="https://m.yelp.com" target="_blank" rel="noopener" class="w-10 h-10 rounded-full border border-white/15 flex items-center justify-center hover:bg-white/10 transition">
+        <a href="https://www.yelp.com/biz/701-salon-and-spa-elizabethtown" target="_blank" rel="noopener" class="w-10 h-10 rounded-full border border-white/15 flex items-center justify-center hover:bg-white/10 transition">
           <i data-lucide="star" class="w-4 h-4"></i>
         </a>
       </div>
@@ -808,8 +1006,8 @@
 
     <div>
       <p class="tracking-wide-plusplus text-xs mb-5" style="color:var(--gold)">VISIT US</p>
-      <p class="text-sm mb-5" style="color:#A79E93">1111 N Dixie Hwy<br>Elizabethtown, KY</p>
-      <a href="https://www.google.com/maps/search/?api=1&query=1111+N+Dixie+Hwy+Elizabethtown+KY"
+      <p class="text-sm mb-5" style="color:#A79E93">1111 N Dixie Hwy, Ste 7A<br>Elizabethtown, KY 42701</p>
+      <a href="https://www.google.com/maps/search/?api=1&query=1111+N+Dixie+Hwy+Ste+7A+Elizabethtown+KY+42701"
          target="_blank" rel="noopener"
          class="inline-flex items-center gap-2 text-sm border border-white/20 rounded-full px-5 py-2.5 hover:bg-white/10 transition">
         <i data-lucide="map-pin" class="w-4 h-4"></i> GET DIRECTIONS
@@ -819,9 +1017,27 @@
 
   <div class="max-w-7xl mx-auto pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs" style="color:#7A7168">
     <p>&copy; <span id="year"></span> 701 Salon &amp; Spa. All rights reserved.</p>
-    <p>1111 N Dixie Hwy, Elizabethtown, KY</p>
+    <p>1111 N Dixie Hwy, Ste 7A, Elizabethtown, KY 42701</p>
   </div>
 </footer>
+
+<!-- ===== PREVIEW BUILD ONLY — delete this block + matching CSS/JS to ship ===== -->
+<div class="ck-watermark" aria-hidden="true">
+  <span>Casey Keown &nbsp;|&nbsp; Custom Web Architecture</span>
+</div>
+
+<div class="ck-bar" id="ckBar" role="complementary" aria-label="Client preview notice">
+  <div class="ck-bar-inner">
+    <span class="ck-tag">CLIENT PREVIEW</span>
+    <p class="ck-credit">
+      <strong>CASEY KEOWN</strong><span class="sep">|</span>CUSTOM WEB ARCHITECTURE<span class="sub"><span class="sep">|</span>701 Salon &amp; Spa — build in review</span>
+    </p>
+    <button class="ck-dismiss" id="ckDismiss" aria-label="Hide preview bar">
+      <i data-lucide="x" class="w-4 h-4"></i>
+    </button>
+  </div>
+</div>
+<!-- ===== END PREVIEW BUILD BLOCK ===== -->
 
 <script>
   lucide.createIcons();
@@ -863,7 +1079,7 @@
     current = i;
   }
   dots.forEach(d => d.addEventListener('click', () => showSlide(parseInt(d.dataset.i))));
-  setInterval(() => showSlide((current + 1) % slides.length), 5500);
+  setInterval(() => showSlide((current + 1) % slides.length), 7500);
 
   // ---- Gallery: arrow scroll controls ----
   const galleryTrack = document.getElementById('galleryTrack');
@@ -961,6 +1177,12 @@
   });
 
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  // ===== PREVIEW BUILD ONLY — delete this block + matching CSS/HTML to ship =====
+  document.getElementById('ckDismiss')?.addEventListener('click', () => {
+    document.getElementById('ckBar')?.classList.add('hidden-bar');
+  });
+  // ===== END PREVIEW BUILD BLOCK =====
 </script>
 
 </body>
